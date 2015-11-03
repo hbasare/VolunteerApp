@@ -14,10 +14,10 @@ public class VolunteerController {
 			@RequestParam(value = "username", required = false, defaultValue = "World") String username) {
 		
 		System.out.println("insided volunteer login method ... ");
-		ModelAndView search = new ModelAndView("volunteerLogin");
-		//search.addObject("message", message);
-		//mv.addObject("name", name);
-		return search;
+		ModelAndView volunteerLogin = new ModelAndView("volunteerLogin");
+		//volunteerLogin.addObject("message", message);
+		//volunteerLogin.addObject("name", name);
+		return volunteerLogin;
 		
 	}
 	
@@ -26,10 +26,34 @@ public class VolunteerController {
 			@RequestParam(value = "username", required = false, defaultValue = "World") String username) {
 		
 		System.out.println("insided volunteer profile method ... ");
-		ModelAndView search = new ModelAndView("volunteerProfile");
-		//mv.addObject("message", message);
-		//mv.addObject("name", name); 
-		return search;
+		ModelAndView volunteerProfile = new ModelAndView("volunteerProfile");
+		//volunteerProfile.addObject("message", message);
+		//volunteerProfile.addObject("name", name); 
+		return volunteerProfile;
+		
+	}
+	
+	@RequestMapping(value="/deleteVolunteerProfile")
+	public ModelAndView getDeleteVolunteerProfile(
+			@RequestParam(value = "username", required = false, defaultValue = "World") String username) {
+		
+		System.out.println("insided delete volunteer profile method ... ");
+		ModelAndView volunteerLogin = new ModelAndView("volunteerLogin");
+		//volunteerLogin.addObject("message", message);
+		//volunteerLogin.addObject("name", name); 
+		return volunteerLogin;
+		
+	}
+	
+	@RequestMapping(value="/volunteerRegistration")
+	public ModelAndView getVolunteerRegistration(
+			@RequestParam(value = "username", required = false, defaultValue = "World") String username) {
+		
+		System.out.println("insided volunteer registration method ... ");
+		ModelAndView volunteerRegistration = new ModelAndView("volunteerRegistration");
+		//volunteerLogin.addObject("message", message);
+		//volunteerLogin.addObject("name", name);
+		return volunteerRegistration;
 		
 	}
 }

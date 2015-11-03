@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Volunteer Profile</title>
+    <title>Client Registration</title>
     <!-- Bootstrap -->
     <link type="text/css" href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 	
@@ -55,20 +55,6 @@
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
 			    		<input type="text" class="form-control" id="lastname" placeholder="Enter last name"/> 
-			    	</div>
-		    	</div>
-		    	<div class="col-sm-2"></div>
-		    </div>
-		    <div class="row">
-		    	<div class="col-sm-2"></div>
-		    	<div class="col-sm-2">
-		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="org">Organization</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-6">
-		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="org" placeholder="Enter the name of your Organisation"/> 
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -130,11 +116,6 @@
 	    </form:form>
   	</div>
     
-    
-
-
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

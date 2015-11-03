@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Volunteer Profile</title>
+    <title>Client Profile</title>
     <!-- Bootstrap -->
     <link type="text/css" href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 	
@@ -21,23 +21,23 @@
     <![endif]-->
   </head>
   <body>
-  	<spring:url value="/volunteerLogin" var="volunteerLogin" htmlEscape="true"/>
-  	<spring:url value="/deleteVolunteerProfile" var="deleteVolunteerProfile" htmlEscape="true"/>
+  	<spring:url value="/clientLogin" var="clientLogin" htmlEscape="true"/>
+  	<spring:url value="/search" var="search" htmlEscape="true"/>
   	<div class="container-fluid">
   		<div class="row">
-	  		<div class="col-sm-1"><a href="${deleteVolunteerProfile}" class="btn btn-info" role="button">Delete Profile</a></div>
+	  		<div class="col-sm-1"><a href="${search}" class="btn btn-info" role="button">Search for Volunteers</a></div>
 	  		<div class="col-sm-10"></div>	  		
-	  		<div class="col-sm-1"><a href="${volunteerLogin}" class="btn btn-info" role="button">Logout</a></div>
+	  		<div class="col-sm-1"><a href="${clientLogin}" class="btn btn-info" role="button">Logout</a></div>
   		</div>
   		<div class="row">
 	  		<div class="col-sm-4"></div>
 	  		<div class="col-sm-4">
-	  			<h1>Volunteer Profile</h1><br/><br/><br/>
+	  			<h1>Client Profile</h1><br/><br/><br/>
 	  		</div>
 	  		<div class="col-sm-4"></div>
   		</div>
   		
-	  	<form class="form-horizontal" role="form" method="post" action="volunteerProfile">
+	  	<form class="form-horizontal" role="form" method="post" action="editClientProfile">
 		  	<div class="row">
 		  		<div class="col-sm-2"></div>
 		  		<div class="col-sm-2">
@@ -70,37 +70,13 @@
 		    	<div class="col-sm-2"></div>
 		    	<div class="col-sm-2">
 		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="gender">Gender</label>
+		    			<label class="control-label col-sm-12" for="org">Organization</label>
 		    		</div>
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-		    			<label class="radio-inline">
-      						<input type="radio" name="gender">Female
-    					</label>
-    					<label class="radio-inline">
-      						<input type="radio" name="gender">Male
-    					</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-2"></div>
-		    </div>
-		    <div class="row">
-		    	<div class="col-sm-2"></div>
-		    	<div class="col-sm-2">
-		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="lang">Preferred Language</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-6">
-		    		<div class="col-sm-10">
-		    			<label class="radio-inline">
-      						<input type="radio" name="lang">English
-    					</label>
-    					<label class="radio-inline">
-      						<input type="radio" name="lang">French
-    					</label>
-		    		</div>
+			    		<input type="text" class="form-control" id="org" placeholder="Enter the name of your Organisation"/> 
+			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
 		    </div>
@@ -146,90 +122,7 @@
 		    	</div>
 		    	<div class="col-sm-2"></div>
 		    </div>
-		    <div class="row">
-		    	<div class="col-sm-2"></div>
-		    	<div class="col-sm-2">
-		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="dob">Date of Birth</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-6">
-		    		<div class="col-sm-10">
-			    		<input type="date" class="form-control" id="dob" placeholder="Enter DOB"/> 
-			    	</div>
-		    	</div>
-		    	<div class="col-sm-2"></div>
-		    </div>
-		    <div class="row">
-		    	<div class="col-sm-2"></div>
-		    	<div class="col-sm-2">
-		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="address">Address</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-6">
-		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="address" placeholder="Enter Address"/> 
-			    	</div>
-		    	</div>
-		    	<div class="col-sm-2"></div>
-		    </div>
-		    <div class="row">
-		    	<div class="col-sm-2"></div>
-		    	<div class="col-sm-2">
-		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="city">City</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-6">
-		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="city" placeholder="Enter City"></input> 
-			    	</div>
-		    	</div>
-		    	<div class="col-sm-2"></div>
-		    </div>
-		    <div class="row">
-		    	<div class="col-sm-2"></div>
-		    	<div class="col-sm-2">
-		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="postalcode">Postal Code</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-6">
-		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="postalcode" placeholder="Enter postal code"></input> 
-			    	</div>
-		    	</div>
-		    	<div class="col-sm-2"></div>
-		    </div>
-		    <div class="row">
-		    	<div class="col-sm-2"></div>
-		    	<div class="col-sm-2">
-		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="province">Province</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-6">
-		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="province" placeholder="Enter province"></input> 
-			    	</div>
-		    	</div>
-		    	<div class="col-sm-2"></div>
-		    </div>
-		    <div class="row">
-		    	<div class="col-sm-2"></div>
-		    	<div class="col-sm-2">
-		    		<div class="form-group">
-		    			<label class="control-label col-sm-12" for="skills">Skill Sets</label>
-		    		</div>
-		    	</div>
-		    	<div class="col-sm-6">
-		    		<div class="col-sm-10">
-			    		<textarea class="form-control" id="skills" placeholder="Enter Skill sets and experience"></textarea> 
-			    	</div>
-		    	</div>
-		    	<div class="col-sm-2"></div>
-		    </div><br />
+		    <br /><br />
 		    <div class="row">	
 		    	<div class="col-sm-2"></div>
 		    	<div class="col-sm-2"></div>
