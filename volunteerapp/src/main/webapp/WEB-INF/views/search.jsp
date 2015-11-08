@@ -21,13 +21,13 @@
     <![endif]-->
   </head>
   <body>
-  	<spring:url value="/clientLogin" var="clientLogin" htmlEscape="true"/>
-  	<spring:url value="/editClientProfile" var="editClientProfile" htmlEscape="true"/>
+  	<spring:url value="/clientLogout" var="clientLogout" htmlEscape="true"/>
+  	<spring:url value="/displayEditClientProfile" var="editClientProfile" htmlEscape="true"/>
   	<div class="container-fluid">
   		<div class="row">
 	  		<div class="col-sm-1"><a href="${editClientProfile}" class="btn btn-info" role="button">Edit Profile</a></div>
 	  		<div class="col-sm-10"></div>	  		
-	  		<div class="col-sm-1"><a href="${clientLogin}" class="btn btn-info" role="button">Logout</a></div>
+	  		<div class="col-sm-1"><a href="${clientLogout}" class="btn btn-info" role="button">Logout</a></div>
   		</div>
   		<div class="row">
 	  		<div class="col-sm-4"></div>

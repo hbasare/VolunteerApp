@@ -21,13 +21,13 @@
     <![endif]-->
   </head>
   <body>
-  	<spring:url value="/clientLogin" var="clientLogin" htmlEscape="true"/>
+  	<spring:url value="/clientLogout" var="clientLogout" htmlEscape="true"/>
   	<spring:url value="/search" var="search" htmlEscape="true"/>
   	<div class="container-fluid">
   		<div class="row">
 	  		<div class="col-sm-1"><a href="${search}" class="btn btn-info" role="button">Search for Volunteers</a></div>
 	  		<div class="col-sm-10"></div>	  		
-	  		<div class="col-sm-1"><a href="${clientLogin}" class="btn btn-info" role="button">Logout</a></div>
+	  		<div class="col-sm-1"><a href="${clientLogout}" class="btn btn-info" role="button">Logout</a></div>
   		</div>
   		<div class="row">
 	  		<div class="col-sm-4"></div>
@@ -37,7 +37,7 @@
 	  		<div class="col-sm-4"></div>
   		</div>
   		
-	  	<form class="form-horizontal" role="form" method="post" action="editClientProfile">
+	  	<form:form class="form-horizontal" role="form" method="post" action="editClientProfile" modelAttribute="client">
 		  	<div class="row">
 		  		<div class="col-sm-2"></div>
 		  		<div class="col-sm-2">
@@ -47,7 +47,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="firstname" placeholder="Enter first name"/>
+			    		<form:input type="text" path="firstName" class="form-control" id="firstname" placeholder="Enter first name"/>
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -61,7 +61,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="lastname" placeholder="Enter last name"/> 
+			    		<form:input type="text" path="lastName" class="form-control" id="lastname" placeholder="Enter last name"/> 
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -75,7 +75,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="org" placeholder="Enter the name of your Organisation"/> 
+			    		<form:input type="text" path="organisation" class="form-control" id="org" placeholder="Enter the name of your Organisation"/> 
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -89,7 +89,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="email" class="form-control" id="email" placeholder="Enter email"/>
+			    		<form:input type="email" path="email" class="form-control" id="email" placeholder="Enter email"/>
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -103,7 +103,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="email" class="form-control" id="password" placeholder="Enter password"/>
+			    		<form:input type="password" path="password" class="form-control" id="password" placeholder="Enter password"/>
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -117,7 +117,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control bfh-phone" data-format="(ddd) ddd-dddd" id="phone" placeholder="Enter phone number"/>
+			    		<form:input type="text" path="phoneNumber" class="form-control bfh-phone" data-format="(ddd) ddd-dddd" id="phone" placeholder="Enter phone number"/>
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -135,7 +135,7 @@
 			  	</div>
 			  	<div class="col-sm-2"></div>
 		  	</div>
-	    </form>
+	    </form:form>
   	</div>
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
