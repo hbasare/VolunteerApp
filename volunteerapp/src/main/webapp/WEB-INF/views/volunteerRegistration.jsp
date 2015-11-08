@@ -30,7 +30,7 @@
 	  		<div class="col-sm-4"></div>
   		</div>
   		
-	  	<form:form class="form-horizontal" role="form" method="post" action="volunteerProfile">
+	  	<form:form class="form-horizontal" role="form" method="post" action="volunteerRegistration" modelAttribute="volunteer">
 		  	<div class="row">
 		  		<div class="col-sm-2"></div>
 		  		<div class="col-sm-2">
@@ -40,7 +40,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="firstname" placeholder="Enter first name"/>
+			    		<form:input type="text" path="firstName" class="form-control" id="firstname" placeholder="Enter first name"/>
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -54,7 +54,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="lastname" placeholder="Enter last name"/> 
+			    		<form:input type="text" path="lastName" class="form-control" id="lastname" placeholder="Enter last name"/> 
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -68,7 +68,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="email" class="form-control" id="email" placeholder="Enter email"/>
+			    		<form:input type="email" path="email" class="form-control" id="email" placeholder="Enter email"/>
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -82,7 +82,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="email" class="form-control" id="password" placeholder="Enter password"/>
+			    		<form:input type="password" path="password" class="form-control" id="password" placeholder="Enter password"/>
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>
@@ -96,7 +96,7 @@
 		    	</div>
 		    	<div class="col-sm-6">
 		    		<div class="col-sm-10">
-			    		<input type="email" class="form-control" id="re-password" placeholder="Re-enter password"/>
+			    		<form:input type="password" path="reEnterPassword" class="form-control" id="re-password" placeholder="Re-enter password"/>
 			    	</div>
 		    	</div>
 		    	<div class="col-sm-2"></div>

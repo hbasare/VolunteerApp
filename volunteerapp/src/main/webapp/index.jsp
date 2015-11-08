@@ -24,7 +24,7 @@
   	<spring:url value="/clientLogin" var="client" htmlEscape="true"/>
   	<spring:url value="/volunteerLogin" var="volunteer" htmlEscape="true"/>
   	<spring:url value="/displayClientRegistration" var="clientReg" htmlEscape="true"/>
-  	<spring:url value="/volunteerRegistration" var="volunteerReg" htmlEscape="true"/>
+  	<spring:url value="/displayVolunteerRegistration" var="volunteerReg" htmlEscape="true"/>
   	<div class="container-fluid">
   		<div class="row">
 	  		<div class="col-sm-1"></div>
