@@ -21,8 +21,8 @@
     <![endif]-->
   </head>
   <body>
-  	<spring:url value="/clientLogin" var="client" htmlEscape="true"/>
-  	<spring:url value="/volunteerLogin" var="volunteer" htmlEscape="true"/>
+  	<spring:url value="/displayClientLogin" var="client" htmlEscape="true"/>
+  	<spring:url value="/displayVolunteerLogin" var="volunteer" htmlEscape="true"/>
   	<spring:url value="/displayClientRegistration" var="clientReg" htmlEscape="true"/>
   	<spring:url value="/displayVolunteerRegistration" var="volunteerReg" htmlEscape="true"/>
   	<div class="container-fluid">

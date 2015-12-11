@@ -11,21 +11,52 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.volunteerapp.model.Client;
+import com.volunteerapp.model.ClientLogIn;
+import com.volunteerapp.model.Search;
 import com.volunteerapp.model.Volunteer;
+import com.volunteerapp.model.VolunteerLogIn;
 
 @Controller
 public class VolunteerController {
 	
 	@RequestMapping(value="/volunteerLogin")
-	public ModelAndView getVolunteerLogin(
-			@RequestParam(value = "username", required = false, defaultValue = "World") String username) {
+	public ModelAndView getVolunteerLogin(@ModelAttribute("volunteerLogin") VolunteerLogIn volunteerLogin, HttpServletRequest request) {
 		
 		System.out.println("insided volunteer login method ... ");
-		ModelAndView volunteerLogin = new ModelAndView("volunteerLogin");
+		if (volunteerLogin.getUsername().equals("b@gmail.com") && volunteerLogin.getPassword().equals("123")) {
+			//get volunteer profile
+			System.out.println("getting volunteer details for profile page ... ");
+			Volunteer volunteer = new Volunteer();
+			volunteer.setFirstName("Doga");
+			volunteer.setLastName("Tav");
+			volunteer.setEmail("b@gmail.com");
+			return new ModelAndView("volunteerProfile", "volunteer", volunteer);
+		} else {
+			return new ModelAndView("volunteerLogin", "volunteerLogin", volunteerLogin);
+		}	
+		
+		//ModelAndView volunteerLogin = new ModelAndView("volunteerLogin");
 		//volunteerLogin.addObject("message", message);
 		//volunteerLogin.addObject("name", name);
-		return volunteerLogin;
+		//return volunteerLogin;
 		
+	}
+	
+	@RequestMapping(value="/displayVolunteerLogin")
+	public ModelAndView displayVolunteerLogin( ) {
+		
+		System.out.println("inside display Volunteer Login method ... ");
+		//search.addObject("message", message);
+		//mv.addObject("name", name);
+		return new ModelAndView("volunteerLogin", "volunteerLogin", new VolunteerLogIn());
+		
+	}
+	
+	@RequestMapping(value="/volunteerLogout")
+	public ModelAndView getVolunteerLogout(HttpServletRequest request) {		
+		System.out.println("insided volunteer Logout method ... ");
+		request.getSession().setAttribute("volunteerProfile", null);
+		return new ModelAndView("volunteerLogin", "volunteerLogin", new VolunteerLogIn());		
 	}
 	
 	@RequestMapping(value="/volunteerProfile", method=RequestMethod.POST)
@@ -33,6 +64,7 @@ public class VolunteerController {
 		
 		System.out.println("insided volunteer profile method ... ");
 		// process profile submission.
+		
 		request.getSession().setAttribute("clientVolunteer", volunteer);
 		System.out.println("added to session ...");
 		
@@ -40,15 +72,12 @@ public class VolunteerController {
 	}
 	
 	@RequestMapping(value="/deleteVolunteerProfile")
-	public ModelAndView getDeleteVolunteerProfile(
-			@RequestParam(value = "username", required = false, defaultValue = "World") String username) {
-		
+	public ModelAndView deleteVolunteerProfile(HttpServletRequest request) {
 		System.out.println("insided delete volunteer profile method ... ");
-		ModelAndView volunteerLogin = new ModelAndView("volunteerLogin");
-		//volunteerLogin.addObject("message", message);
-		//volunteerLogin.addObject("name", name); 
-		return volunteerLogin;
-		
+		Volunteer volunteer = (Volunteer) request.getSession().getAttribute("volunteerProfile");
+		// process deletion.
+		request.getSession().setAttribute("clientVolunteer", null);
+		return new ModelAndView("volunteerLogin", "volunteerLogin", new VolunteerLogIn());		
 	}
 	
 	@RequestMapping(value="/volunteerRegistration")

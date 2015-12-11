@@ -5,31 +5,60 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.volunteerapp.model.Client;
+import com.volunteerapp.model.ClientLogIn;
+import com.volunteerapp.model.Search;
+import com.volunteerapp.model.SearchResults;
+import com.volunteerapp.services.SearchService;
 
 @Controller
 public class ClientController {
 
 	@RequestMapping(value="/search")
-	public ModelAndView getSearch( ) {
+	public ModelAndView getSearch(@ModelAttribute("search") Search searchParameters, HttpServletRequest request) {
 		System.out.println("insided search method ... ");
-		//mv.addObject("message", message);
-		//mv.addObject("name", name); 
-		return new ModelAndView("search");
+		if (searchParameters.getCity().length() != 0 || searchParameters.getGender().length() != 0 ||
+				searchParameters.getLang().length() != 0 || searchParameters.getProvince().length() != 0 ||
+						searchParameters.getSkillSet().length() != 0) {
+			
+			System.out.println("executing search ... ");
+			SearchService service = new SearchService();
+			SearchResults results  = service.executeSearch(searchParameters);
+			ModelAndView searchModelView = new ModelAndView("search");
+			searchModelView.addObject("searchResults", results.getVolunteers());
+			searchModelView.addObject("search", searchParameters);
+			return searchModelView;
+			//return new ModelAndView("search", "search", search);
+		} else {
+			return new ModelAndView("search", "search", searchParameters);
+		}
 	}
 	
 	@RequestMapping(value="/clientLogin")
-	public ModelAndView getClientLogin(
-			@RequestParam(value = "username", required = false, defaultValue = "World") String username) {
+	public ModelAndView getClientLogin(@ModelAttribute("clientLogin") ClientLogIn clientLogin, HttpServletRequest request) {
 		
 		System.out.println("insided client Login method ... ");
-		ModelAndView clientLogin = new ModelAndView("clientLogin");
+		if (clientLogin.getUsername().equals("a@gmail.com") && clientLogin.getPassword().equals("123")) {
+			Client client = new Client ();
+			client.setFirstName("Nicole");
+			client.setLastName("McNeil");
+			client.setEmail("a@gmail.come");
+			request.getSession().setAttribute("clientProfile", client);
+			return new ModelAndView("search", "search", new Search());
+		} else {
+			return new ModelAndView("clientLogin");
+		}		
+	}
+	
+	@RequestMapping(value="/displayClientLogin")
+	public ModelAndView displayClientLogin( ) {
+		
+		System.out.println("insided display client Login method ... ");
 		//search.addObject("message", message);
 		//mv.addObject("name", name);
-		return clientLogin;
+		return new ModelAndView("clientLogin", "clientLogin", new ClientLogIn());
 		
 	}
 	
@@ -37,7 +66,16 @@ public class ClientController {
 	public ModelAndView getClientLogout(HttpServletRequest request) {		
 		System.out.println("insided client Logout method ... ");
 		request.getSession().setAttribute("clientProfile", null);
-		return new ModelAndView("clientLogin");		
+		return new ModelAndView("clientLogin", "clientLogin", new ClientLogIn());		
+	}
+	
+	@RequestMapping(value="/deleteClientProfile")
+	public ModelAndView deleteClientProfile(HttpServletRequest request) {
+		System.out.println("insided delete client profile method ... ");
+		//Client client = (Client) request.getSession().getAttribute("clientProfile");
+		// process deletion.
+		request.getSession().setAttribute("clientProfile", null);
+		return new ModelAndView("clientLogin", "clientLogin", new ClientLogIn());		
 	}
 	
 	@RequestMapping(value="/clientRegistration")
@@ -57,10 +95,16 @@ public class ClientController {
 			//process registration
 			request.getSession().setAttribute("clientProfile", client);
 			System.out.println("processing client registraiton ...");
-			return new ModelAndView("search");
+			return new ModelAndView("search", "search", new Search());
 		}
-		
-		
+	}
+	
+	@RequestMapping(value="/displaySearch")
+	public ModelAndView displaySearch( ) {
+		System.out.println("insided display search method ... ");
+		//mv.addObject("message", message);
+		//mv.addObject("name", name); 
+		return new ModelAndView("search", "search", new Search());
 	}
 	
 	@RequestMapping(value="/displayClientRegistration")

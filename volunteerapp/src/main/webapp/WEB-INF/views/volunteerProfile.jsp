@@ -21,13 +21,13 @@
     <![endif]-->
   </head>
   <body>
-  	<spring:url value="/volunteerLogin" var="volunteerLogin" htmlEscape="true"/>
+  	<spring:url value="/volunteerLogout" var="volunteerLogout" htmlEscape="true"/>
   	<spring:url value="/deleteVolunteerProfile" var="deleteVolunteerProfile" htmlEscape="true"/>
   	<div class="container-fluid">
   		<div class="row">
 	  		<div class="col-sm-1"><a href="${deleteVolunteerProfile}" class="btn btn-info" role="button">Delete Profile</a></div>
 	  		<div class="col-sm-10"></div>	  		
-	  		<div class="col-sm-1"><a href="${volunteerLogin}" class="btn btn-info" role="button">Logout</a></div>
+	  		<div class="col-sm-1"><a href="${volunteerLogout}" class="btn btn-info" role="button">Logout</a></div>
   		</div>
   		<div class="row">
 	  		<div class="col-sm-4"></div>

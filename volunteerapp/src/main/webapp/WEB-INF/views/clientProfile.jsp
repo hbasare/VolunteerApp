@@ -22,11 +22,14 @@
   </head>
   <body>
   	<spring:url value="/clientLogout" var="clientLogout" htmlEscape="true"/>
-  	<spring:url value="/search" var="search" htmlEscape="true"/>
+  	<spring:url value="/deleteClientProfile" var="deleteClientProfile" htmlEscape="true"/>
+  	<spring:url value="/displaySearch" var="search" htmlEscape="true"/>
   	<div class="container-fluid">
   		<div class="row">
 	  		<div class="col-sm-1"><a href="${search}" class="btn btn-info" role="button">Search for Volunteers</a></div>
-	  		<div class="col-sm-10"></div>	  		
+	  		<div class="col-sm-4"></div>	
+	  		<div class="col-sm-2"><a href="${deleteClientProfile}" class="btn btn-info" role="button">Delete Profile</a></div>	  	
+	  		<div class="col-sm-4"></div>	  	
 	  		<div class="col-sm-1"><a href="${clientLogout}" class="btn btn-info" role="button">Logout</a></div>
   		</div>
   		<div class="row">

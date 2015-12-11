@@ -37,14 +37,72 @@
 	  		<div class="col-sm-4"></div>
   		</div>
   		
-	  	<form class="form-horizontal" role="form">
-		  	<div class="row">
+	  	<form:form class="form-horizontal" role="form" method="post" action="search" modelAttribute="search">
+	  		<div class="row">
 		  		<div class="col-sm-2"></div>
-		    	<div class="col-sm-8">
+		  		<div class="col-sm-2">
+		  			<div class="form-group">
+		    			<label class="control-label col-sm-12" for="city">City</label>
+		    		</div>
+		    	</div>
+		    	<div class="col-sm-2">
 		    		<div class="col-sm-10">
-			    		<input type="text" class="form-control" id="search" placeholder=""/>
+			    		<form:input type="text" path="city" class="form-control" id="city" />
 			    	</div>
 		    	</div>
+		    	<div class="col-sm-2">
+		  			<div class="form-group">
+		    			<label class="control-label col-sm-12" for="province">Province</label>
+		    		</div>
+		    	</div>
+		    	<div class="col-sm-2">
+		    		<div class="col-sm-10">
+			    		<form:input type="text" path="province" class="form-control" id="province" />
+			    	</div>
+		    	</div>
+		    	<div class="col-sm-2"></div>
+		    </div>
+		    <div class="row">
+		  		<div class="col-sm-2"></div>
+		  		<div class="col-sm-2">
+		  			<div class="form-group">
+		    			<label class="control-label col-sm-12" for="lang">Language</label>
+		    		</div>
+		    	</div>
+		    	<div class="col-sm-2">
+		    		<div class="col-sm-10">
+			    		<form:input type="text" path="lang" class="form-control" id="lang" />
+			    	</div>
+		    	</div>
+		    	<div class="col-sm-2">
+		  			<div class="form-group">
+		    			<label class="control-label col-sm-12" for="gender">Gender</label>
+		    		</div>
+		    	</div>
+		    	<div class="col-sm-2">
+		    		<div class="col-sm-10">
+			    		<form:input type="text" path="gender" class="form-control" id="gender" />
+			    	</div>
+		    	</div>
+		    	<div class="col-sm-2"></div>
+		    </div>
+		    <div class="row">
+		  		<div class="col-sm-2"></div>
+		  		<div class="col-sm-2">
+		  			<div class="form-group">
+		    			<label class="control-label col-sm-12" for="skillSet">Skill Set</label>
+		    		</div>
+		    	</div>
+		    	<div class="col-sm-6">
+		    		<div class="col-sm-10">
+			    		<form:input type="text" path="skillSet" class="form-control" id="skillSet" />
+			    	</div>
+		    	</div>
+		    	<div class="col-sm-2"></div>
+		    </div>
+		    
+		  	<div class="row">
+		  		<div class="col-sm-6"></div>
 		    	<div class="col-sm-2">
 		    		<div class="form-group">
 			    		<div class="col-sm-2">
@@ -52,38 +110,54 @@
 			    		</div>
 			  		</div>
 		    	</div>
+		    	<div class="col-sm-4"></div>
 		    </div>
-		    <br/><br/>
-		    <div>
-		    	<table class="table table-striped">
-		    		<thead>
-		    			<tr>
-		    				<th>First Name</th>
-		    				<th>Last Name</th>
-		    				<th>Email</th>
-		    				<th>Telephone</th>
-		    				<th>City</th>
-		    			</tr>
-		    		</thead>
-		    		<tbody>
-		    			<tr>
-		    				<td>Doga</td>
-		    				<td>Tav</td>
-		    				<td>me@somewhere.ca</td>
-		    				<td>506-000-7777</td>
-		    				<td>Fredericton</td>
-		    			</tr>
-		    			<tr>
-		    				<td>Nicole</td>
-		    				<td>McGee</td>
-		    				<td>moi@somewhere.ca</td>
-		    				<td>506-222-8888</td>
-		    				<td>Saint John</td>
-		    			</tr>		    			
-		    		</tbody>
-		    	</table>
-		    </div>
-	    </form>
+		</form:form>
+	    <br/><br/>
+	    <c:if test="${not empty searchResults}">
+	    <div>
+	    	<table class="table table-striped">
+	    		<thead>
+	    			<tr>
+	    				<th>First Name</th>
+	    				<th>Last Name</th>
+	    				<th>Email</th>
+	    				<th>Telephone</th>
+	    				<th>City</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			
+	    				<c:forEach var="volunteer" items="${searchResults}">
+	    					<tr>
+			    				<td>${volunteer.firstName}</td>
+			    				<td>${volunteer.lastName}</td>
+			    				<td>${volunteer.email}</td>
+			    				<td>${volunteer.phoneNumber}</td>
+			    				<td>${volunteer.city}</td>
+	    					</tr>
+	    				</c:forEach>
+	    			
+	    			<!-- 
+	    			<tr>
+	    				<td>Doga</td>
+	    				<td>Tav</td>
+	    				<td>me@somewhere.ca</td>
+	    				<td>506-000-7777</td>
+	    				<td>Fredericton</td>
+	    			</tr>
+	    			<tr>
+	    				<td>Nicole</td>
+	    				<td>McGee</td>
+	    				<td>moi@somewhere.ca</td>
+	    				<td>506-222-8888</td>
+	    				<td>Saint John</td>
+	    			</tr>	
+	    			 -->	    			
+	    		</tbody>
+	    	</table>
+	    </div>
+	   </c:if> 
   	</div>
     
     
